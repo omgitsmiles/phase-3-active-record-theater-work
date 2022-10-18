@@ -2,13 +2,13 @@ class Role < ActiveRecord::Base
     has_many :auditions
 
     def actors 
-        auditions.map do { |audition| audition[:name]}
+        auditions.map { |audition| audition[:name] }
             # OR
             # auditions.pluck(:actor)
     end
 
     def locations
-        auditions.map do { |audition| audition[:location]}
+        auditions.map { |audition| audition[:location] }
             # OR
             # auditions.pluck(:location)
     end
@@ -23,7 +23,7 @@ class Role < ActiveRecord::Base
     end
 
     def understudy
-        audition = auditions.find { |audition| audition.hired }
+        auditions = auditions.find { |audition| audition.hired }
         if audition[1]
             audition[1]
         else
